@@ -1,6 +1,6 @@
 # U-Mamba2
-UMamba2 [![UMamba2 Paper](https://img.shields.io/badge/cs.CV-arxiv:2509.12069-B31B1B.svg)](https://arxiv.org/abs/2509.12069) [proceedings](https://doi.org/10.1007/978-3-032-20711-1_12)
-| UMamba2-SSL [![UMamba2-SSL Paper](https://img.shields.io/badge/cs.CV-arxiv:2509.20154-B31B1B.svg)](https://arxiv.org/abs/2509.20154) [proceedings](https://doi.org/10.1007/978-3-032-20711-1_18)
+U-Mamba2 [![U-Mamba2 Paper](https://img.shields.io/badge/cs.CV-arxiv:2509.12069-B31B1B.svg)](https://arxiv.org/abs/2509.12069) [proceedings](https://doi.org/10.1007/978-3-032-20711-1_12)
+| U-Mamba2-SSL [![U-Mamba2-SSL Paper](https://img.shields.io/badge/cs.CV-arxiv:2509.20154-B31B1B.svg)](https://arxiv.org/abs/2509.20154) [proceedings](https://doi.org/10.1007/978-3-032-20711-1_18)
 ### First Place Solution of team KCL TAIR Lab for the [ODIN](https://odin-workshops.org/) Challenges ([ToothFairy3](https://toothfairy3.grand-challenge.org/) and [STSR 2025](https://www.codabench.org/competitions/6468/))
 Leaderboard: [ToothFairy 3](https://toothfairy3.grand-challenge.org/challenge-winners); [Task 1](https://www.codabench.org/competitions/6468/#/results-tab) in STSR 2025.
 
@@ -89,8 +89,8 @@ We thank the authors of  [mamba](https://github.com/state-spaces/mamba),
 ## Disclaimer
 This is a forked repo of [nnUNet v2.6.2](https://github.com/MIC-DKFZ/nnUNet/tree/74ceb6803d10dcee29b2cc481678d3a3d069f281). We made a few changes to the core training codes
 for the competition (e.g. reduce precision for evaluation, extra logging, including interactive clicks, etc.).
-Please see [this](https://github.com/zhiqin1998/UMamba2/commit/8cb395407757ae2130657751e96f32a781031caf) commit
-for our contributions. The original code is licensed under Apache 2.0 but our contributions are licensed under CC BY-NC.
+Please see [this](https://github.com/zhiqin1998/U-Mamba2/commit/8cb395407757ae2130657751e96f32a781031caf) commit
+for our contributions. The original code is licensed under Apache 2.0, but our contributions are licensed under CC BY-NC.
 
 If you prefer to use the original repo, simply copy the [`nets`](nnunetv2/nets) folder to 
 [nnUNet/nnunetv2](https://github.com/MIC-DKFZ/nnUNet/tree/master/nnunetv2) and make sure to update the generated plan files with
