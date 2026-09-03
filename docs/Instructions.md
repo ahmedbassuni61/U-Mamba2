@@ -82,9 +82,11 @@ U-Mamba2/
 
 * [x] Repository cloned locally.
 * [x] `docs/` folder created with inference guide.
-* [x] Colab CBCT inference guide written (`docs/colab_cbct_inference_guide.md`).
+* [x] Colab/Kaggle CBCT inference guide written (`docs/colab_cbct_inference_guide.md`).
 * [x] Pre-flight checklist created (`docs/checklist.md`).
-* [ ] Create Colab notebook (`.ipynb`) for end-to-end inference.
-* [ ] Test inference on a sample CBCT scan.
-* [ ] Add visualization utilities (3D Slicer export, multi-planar views).
-* [ ] Document Task 2 (interactive click-based) inference for Colab.
+* [x] Created `docs/smoke_test_inference.py` for direct model verification with SSL weights.
+* [x] Verified end-to-end inference on Kaggle GPU (Tesla T4, 4.63 GB peak VRAM, 119.5s).
+* [ ] Test inference on a real CBCT scan (`--input_nifti`).
+* [ ] Obtain or fine-tune supervised segmentation weights (ToothFairy3 47 classes).
+* [ ] Create standalone Colab/Kaggle notebook (`.ipynb`) for end-to-end pipeline.
+* [ ] Document Task 2 (interactive click-based) inference.
