@@ -24,6 +24,13 @@ import sys
 import argparse
 import gc
 import time
+
+# Ensure nnunetv2 is importable even without pip install -e .
+# Resolve repo root: this script lives in <repo>/docs/
+_REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
+
 import numpy as np
 import torch
 
