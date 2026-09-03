@@ -156,14 +156,31 @@ def load_ssl_weights(model, weights_path, device='cuda'):
         clean_key = k.replace('module.', '').replace('_orig_mod.', '')
         cleaned[clean_key] = v
 
-    # Load with strict=False so mismatched seg_layers / missing keys don't crash
-    msg = model.load_state_dict(cleaned, strict=False)
-    print(f"  Missing keys:    {len(msg.missing_keys)}")
-    print(f"  Unexpected keys: {len(msg.unexpected_keys)}")
+    # Filter out keys with shape mismatches (e.g. SSL autoencoder seg_layers have 1 output channel vs 47 for segmentation)
+    model_state = model.state_dict()
+    filtered = {}
+    skipped_shape = []
+    for k, v in cleaned.items():
+        if k in model_state:
+            if v.shape == model_state[k].shape:
+                filtered[k] = v
+            else:
+                skipped_shape.append((k, list(v.shape), list(model_state[k].shape)))
+        else:
+            filtered[k] = v
+
+    if skipped_shape:
+        print(f"  Skipped {len(skipped_shape)} parameter(s) with shape mismatch (SSL reconstruction head):")
+        for k, ckpt_s, m_s in skipped_shape[:6]:
+            print(f"    - {k}: checkpoint {ckpt_s} vs model {m_s}")
+
+    # Load matching weights
+    msg = model.load_state_dict(filtered, strict=False)
+    print(f"  Successfully loaded: {len(filtered)} tensor(s)")
+    print(f"  Missing keys:        {len(msg.missing_keys)}")
+    print(f"  Unexpected keys:     {len(msg.unexpected_keys)}")
     if msg.missing_keys:
-        print(f"  (first few missing): {msg.missing_keys[:5]}")
-    if msg.unexpected_keys:
-        print(f"  (first few unexpected): {msg.unexpected_keys[:5]}")
+        print(f"    (first few missing): {msg.missing_keys[:5]}")
 
     return model
 
